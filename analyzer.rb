@@ -11,10 +11,14 @@ text = lines.join
 line_count = lines.size
 total_characters = text.length
 total_characters_nospace = text.gsub(/\s+/, '').length
-# p text.scan(/[\w\-]+/).length
+
 all_words = text.split
+word_count = all_words.length
+
 good_words = all_words.reject { |word| STOPWORDS.include?(word) }
-good_percentage = ((good_words.length.to_f / all_words.length.to_f ) * 100).to_i
+good_word_count = good_words.length
+
+good_percentage = ((good_word_count.to_f / word_count.to_f ) * 100).to_i
 sentence_count = text.split(/\.|\?|!/).length
 paragraph_count = text.split(/\n\n/).length
 
