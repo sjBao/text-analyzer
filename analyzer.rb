@@ -1,4 +1,11 @@
-lines = File.readlines('oliver.txt')
+if ARGV.length < 1
+  puts 'Usage: ruby analyzer.rb filename.txt'
+  return
+end
+
+filename = ARGV[0]
+
+lines = File.readlines(filename)
 text = lines.join
 
 STOPWORDS = %w[the a by on for of are with just but and to the my I has some in].freeze
