@@ -1,20 +1,20 @@
-if ARGV.length < 1
+if ARGV.empty?
   puts 'Usage: ruby analyzer.rb filename.txt'
-  return
+  return 1
 end
 
 filename = ARGV[0]
-
+STOPWORDS = %w[the a by on for of are with just but and to the my I has some in].freeze
 lines = File.readlines(filename)
 text = lines.join
-
-STOPWORDS = %w[the a by on for of are with just but and to the my I has some in].freeze
 
 line_count = lines.size
 total_characters = text.length
 total_characters_nospace = text.gsub(/\s+/, '').length
 # p text.scan(/[\w\-]+/).length
-word_count = text.split.length
+all_words = text.split
+good_words = all_words.reject { |word| STOPWORDS.include?(word) }
+good_percentage = ((good_words.length.to_f / all_words.length.to_f ) * 100).to_i
 sentence_count = text.split(/\.|\?|!/).length
 paragraph_count = text.split(/\n\n/).length
 
