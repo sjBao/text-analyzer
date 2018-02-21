@@ -34,6 +34,7 @@ one_third = sentences_sorted.length / 3
 ideal_sentences = sentences_sorted.slice(one_third, one_third + 1)
 ideal_sentences = ideal_sentences.select { |sentence| sentence =~ /is|are/ }
 
+puts "\n\n--Begin analysis...\n\n"
 puts "#{line_count} lines"
 puts "#{total_characters} characters"
 puts "#{total_characters_nospace} characters excluding spaces"
@@ -43,3 +44,6 @@ puts "#{paragraph_count} paragraphs"
 puts "#{word_count / sentence_count} words per sentences (average)"
 puts "#{sentence_count / paragraph_count} sentences per paragraph (average)"
 puts "#{good_percentage}% of words are non-fluff words"
+puts "\n\nSummary:\n\n" + ideal_sentences.join('. ')
+
+puts "-- End of Analysis"
